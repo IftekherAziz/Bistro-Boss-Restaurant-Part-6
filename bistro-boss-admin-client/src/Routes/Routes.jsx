@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoute";
 import PaymentHistrory from "../pages/Dashboard/PaymentHistrory/PaymentHistrory";
 import Reservations from "../pages/Dashboard/Reservations/Reservations";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu></Menu>,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "/order/:category",

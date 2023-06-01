@@ -16,6 +16,7 @@ import Reservations from "../pages/Dashboard/Reservations/Reservations";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import AddItems from "../pages/Dashboard/AddItems/AddItems";
+import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 
 export const router = createBrowserRouter([
   {
@@ -59,11 +60,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "user-home",
-        element: <UserHome></UserHome>
+        element: <UserHome></UserHome>,
       },
       {
         path: "reservations",
-        element: <Reservations></Reservations>
+        element: <Reservations></Reservations>,
       },
       {
         path: "payment-history",
@@ -73,13 +74,21 @@ export const router = createBrowserRouter([
         path: "my-cart",
         element: <MyCart></MyCart>,
       },
-       {
+      {
         path: "add-item",
         element: (
           <AdminRoute>
             <AddItems></AddItems>
           </AdminRoute>
-        )
+        ),
+      },
+      {
+        path: "manage-items",
+        element: (
+          <AdminRoute>
+            <ManageItems></ManageItems>
+          </AdminRoute>
+        ),
       },
       {
         path: "allusers",

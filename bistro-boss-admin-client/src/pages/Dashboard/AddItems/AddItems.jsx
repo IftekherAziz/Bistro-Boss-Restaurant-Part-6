@@ -11,7 +11,6 @@ const AddItems = () => {
   const { register, handleSubmit, reset } = useForm();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
   const onSubmit = async (data) => {
-
     const formData = new FormData();
     formData.append("image", data.image[0]);
 
@@ -21,31 +20,29 @@ const AddItems = () => {
     })
       .then((res) => res.json())
       .then((imgResponse) => {
-         const imgURL = imgResponse.data.display_url;
-         const { name, price, category, recipe } = data;
-         const newItem = {
-            name,
-            price,
-            category,
-            recipe,
-            image: imgURL,
-         }
-         axiosSecure.post("/menu", newItem)
-         .then((res) => {
-            //  console.log('After posting new menu item: ', res.data);
-             if(res.data.insertedId){
-                Swal.fire({
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Item added successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                reset();
-             }
-         })
-          
-      })
+        const imgURL = imgResponse.data.display_url;
+        const { name, price, category, recipe } = data;
+        const newItem = {
+          name,
+          price,
+          category,
+          recipe,
+          image: imgURL,
+        };
+        axiosSecure.post("/menu", newItem).then((res) => {
+          //  console.log('After posting new menu item: ', res.data);
+          if (res.data.insertedId) {
+            reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Item added successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+      });
   };
 
   return (
@@ -83,7 +80,7 @@ const AddItems = () => {
               <option value="pizza">Pizza</option>
               <option value="soup">Soup</option>
               <option value="salad">Salad</option>
-              <option value= "dessert">Dessert</option>
+              <option value="dessert">Dessert</option>
               <option value="drinks">Drinks</option>
               <option value="offered">On Sale</option>
             </select>

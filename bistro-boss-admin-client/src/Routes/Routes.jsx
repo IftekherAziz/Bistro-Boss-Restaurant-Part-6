@@ -15,6 +15,7 @@ import PaymentHistrory from "../pages/Dashboard/PaymentHistrory/PaymentHistrory"
 import Reservations from "../pages/Dashboard/Reservations/Reservations";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import AddItems from "../pages/Dashboard/AddItems/AddItems";
 
 export const router = createBrowserRouter([
   {
@@ -71,6 +72,14 @@ export const router = createBrowserRouter([
       {
         path: "my-cart",
         element: <MyCart></MyCart>,
+      },
+       {
+        path: "add-item",
+        element: (
+          <AdminRoute>
+            <AddItems></AddItems>
+          </AdminRoute>
+        )
       },
       {
         path: "allusers",

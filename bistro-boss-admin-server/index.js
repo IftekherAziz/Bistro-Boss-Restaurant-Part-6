@@ -49,6 +49,7 @@ async function run() {
         const menuCollection = client.db("bistroDB").collection("menu");
         const reviewCollection = client.db("bistroDB").collection("reviews");
         const cartCollection = client.db("bistroDB").collection("carts");
+        const contactCollection = client.db("bistroDB").collection("contacts");
 
         // POST jwt token:
         app.post('/jwt', async (req, res) => {
@@ -182,6 +183,14 @@ async function run() {
             const result = await cartCollection.deleteOne(query);
             res.send(result);
         })
+
+        // POST form data to MongoDB
+        app.post('/contacts', async (req, res) => {
+            const contact = req.body;
+            // Insert the contact data into the MongoDB collection
+            const result = await contactCollection.insertOne(contact);
+            res.send(result);
+        });
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });

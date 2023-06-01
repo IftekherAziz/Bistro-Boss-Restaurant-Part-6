@@ -145,6 +145,13 @@ async function run() {
             res.send(result);
         })
 
+        // POST an items data on MongoDB:
+        app.post('/menu', verifyJWT, verifyAdmin, async (req, res) => {
+            const newItem = req.body;
+            const result = await menuCollection.insertOne(newItem);
+            res.send(result);
+        })
+
         // GET reviews data from MongoDB:
         app.get('/reviews', async (req, res) => {
             const result = await reviewCollection.find().toArray();
